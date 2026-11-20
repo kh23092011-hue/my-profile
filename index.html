@@ -1,173 +1,622 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân | Khánh</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khánh | Tech, DIY & Gamer Profile</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --surface: #121826;
+      --surface-2: #182134;
+      --text: #e6edf7;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --radius: 16px;
+    }
 
-        body {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 700px;
-            width: 100%;
-            background-color: #1e293b;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border: 1px solid #334155;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
+    body {
+      font-family: "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.12), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(34, 197, 94, 0.10), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
 
-        .avatar {
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 50%;
-            margin: 0 auto 15px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        h1 {
-            color: #60a5fa;
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        .subtitle {
-            color: #94a3b8;
-            font-style: italic;
-        }
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 23, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
 
-        .section {
-            margin-bottom: 25px;
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
 
-        h2 {
-            color: #38bdf8;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 10px var(--accent-2);
+    }
 
-        li {
-            background-color: #0f172a;
-            margin-bottom: 10px;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-        }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
 
-        /* Thanh chỉ số độ sát gái */
-        .stat-bar-bg {
-            background-color: #0f172a;
-            height: 24px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: 8px;
-            border: 1px solid #334155;
-            position: relative;
-        }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-        .stat-bar-fill {
-            background: linear-gradient(90deg, #ec4899, #ef4444);
-            height: 100%;
-            width: 99.9%; /* Chỉnh chỉ số phần trăm ở đây */
-            border-radius: 12px;
-            box-shadow: 0 0 12px rgba(236, 72, 153, 0.6);
-        }
+    /* Hero */
+    .hero {
+      padding: 72px 0 48px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
 
-        .stat-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 13px;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-    </style>
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.18;
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #061018;
+      border-color: transparent;
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    /* Terminal Card */
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .lights {
+      display: flex;
+      gap: 6px;
+    }
+
+    .lights span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .lights span:nth-child(1) { background: #ef4444; }
+    .lights span:nth-child(2) { background: #eab308; }
+    .lights span:nth-child(3) { background: #22c55e; }
+
+    .terminal-body {
+      padding: 16px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+    }
+
+    .cmd { color: var(--accent); }
+    .val { color: var(--accent-2); }
+    .key { color: #f472b6; }
+
+    /* Sections */
+    section {
+      padding: 44px 0;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: #cbd5e1;
+      border: 1px solid var(--border);
+    }
+
+    /* Filter tabs */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .filter-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.45);
+      font-weight: 600;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 36px;
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .hero, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <!-- Phần Đầu: Tên & Avatar -->
-        <div class="header">
-            <div class="avatar">⚡</div>
-            <h1>Nguyễn Công Khánh</h1>
-            <p class="subtitle">"Code, Game & Đam Mê Công Nghệ"</p>
-        </div>
-
-        <!-- 1. Ngoại hình -->
-        <div class="section">
-            <h2>😎 Ngoại Hình</h2>
-            <ul>
-                <li><strong>Phong cách:</strong> Gọn gàng, khỏe khoắn, chuộng phong cách Đen/Dark style.</li>
-                <li><strong>Thần thái:</strong> Điềm tĩnh, cool ngầu, tập luyện Calisthenics mỗi ngày.</li>
-            </ul>
-        </div>
-
-        <!-- 2. Tính cách -->
-        <div class="section">
-            <h2>🔥 Tính Cách</h2>
-            <ul>
-                <li>Tự do, ham học hỏi những thứ mới mẻ về máy tính và kỹ thuật.</li>
-                <li>Thích tự tay lắp ráp, mày mò nghiên cứu mọi thứ từ phần cứng đến phần mềm.</li>
-                <li>Thoải mái, vui vẻ với bạn bè nhưng cực kỳ nghiêm túc khi theo đuổi mục tiêu.</li>
-            </ul>
-        </div>
-
-        <!-- 3. Sở thích & Đam mê -->
-        <div class="section">
-            <h2>💻 Sở Thích & Đam Mê</h2>
-            <ul>
-                <li><strong>Lập trình & Công nghệ:</strong> Vừa học Lập trình Web, vừa mê phần cứng Arduino, ESP32, vi điều khiển.</li>
-                <li><strong>Gaming đỉnh cao:</strong> Chiến Valorant (tay aim arm-aimer thứ thiệt), Roblox, War Robots, Minecraft.</li>
-                <li><strong>Sở thích khác:</strong> Xe tăng, quân sự, FPV Drone và xem Anime/Manga Rom-Com.</li>
-            </ul>
-        </div>
-
-        <!-- 4. Độ sát gái -->
-        <div class="section">
-            <h2>💘 Chỉ Số "Độ Sát Gái"</h2>
-            <p>Tuy không hay thả thính linh tinh, nhưng một khi đã ra tay là dứt điểm!</p>
-            <div class="stat-bar-bg">
-                <div class="stat-bar-fill"></div>
-                <span class="stat-text">99.9% (Overpowered / Sát thương tuyệt đối)</span>
-            </div>
-        </div>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="dot"></span>
+        <span>khanh.dev</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">Giới thiệu</a>
+        <a href="#interests">Sở thích</a>
+        <a href="#projects">Dự án &amp; Kỹ năng</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
     </div>
+  </header>
 
+  <main id="top">
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <div>
+          <div class="badge">⚡ Tech • DIY • Gaming • FPV</div>
+          <h1>Chào, mình là <span>Khánh</span></h1>
+          <p>
+            Mình thích tìm hiểu cách mọi thứ vận hành — từ vi điều khiển, cảm biến,
+            lắp ráp cơ khí/điện tử, vẽ kỹ thuật tay cho đến cày game và khám phá công nghệ mới.
+            Trang này là nơi tổng hợp góc nhìn, sở thích và những gì mình đang làm.
+          </p>
+          <div class="actions">
+            <a href="#projects" class="btn btn-primary">Xem dự án &amp; mảng quan tâm</a>
+            <a href="#contact" class="btn btn-ghost">Kết nối với mình</a>
+            <button id="shuffleQuote" class="btn btn-ghost" type="button">Đổi câu châm ngôn</button>
+          </div>
+          <p id="quoteBox" style="margin-top: 14px; font-style: italic; color: #cbd5e1;">
+            "Làm ít nói nhiều, test thực tế luôn dạy nhiều hơn lý thuyết suông."
+          </p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-top">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <span>profile.json</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="cmd">$</span> cat whoami.json</div>
+            <br />
+            <div>{</div>
+            <div>&nbsp;&nbsp;<span class="key">"name"</span>: <span class="val">"Khánh"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="key">"focus"</span>: [<span class="val">"CNTT"</span>, <span class="val">"DIY Electronics"</span>, <span class="val">"FPV"</span>],</div>
+            <div>&nbsp;&nbsp;<span class="key">"military_tech"</span>: [<span class="val">"Xe tăng"</span>, <span class="val">"Súng"</span>],</div>
+            <div>&nbsp;&nbsp;<span class="key">"games"</span>: [<span class="val">"Valorant"</span>, <span class="val">"Roblox"</span>, <span class="val">"War Robots"</span>],</div>
+            <div>&nbsp;&nbsp;<span class="key">"status"</span>: <span class="val">"Building &amp; leveling up"</span></div>
+            <div>}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section id="about">
+        <h2 class="section-title">Tổng quan nhanh</h2>
+        <p class="section-sub">Một vài con số tượng trưng cho nhịp độ học, làm và chơi của mình.</p>
+        <div class="stats">
+          <div class="stat">
+            <strong>3+</strong>
+            <span>Mảng chính: Code, Phần cứng, Game</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Tinh thần tự mày mò &amp; thử nghiệm</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Đầu óc luôn đầy ý tưởng mới</span>
+          </div>
+          <div class="stat">
+            <strong>∞</strong>
+            <span>Thứ hay ho để học tiếp</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interests -->
+      <section id="interests">
+        <h2 class="section-title">Sở thích cốt lõi</h2>
+        <p class="section-sub">Những chủ đề mình có thể ngồi đọc, xem hoặc làm hàng giờ không chán.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>💻 CNTT &amp; Máy tính</h3>
+            <p>
+              Thích tối ưu hệ thống, vọc phần mềm, viết code web/script và tìm hiểu cách phần cứng
+              tương tác với hệ điều hành.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML/CSS/JS</span>
+              <span class="tag">Python / C++</span>
+              <span class="tag">PC &amp; OS</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🚁 FPV &amp; Điều khiển</h3>
+            <p>
+              Hứng thú với drone/FPV, tín hiệu điều khiển, pin/nguồn và cảm giác làm chủ thiết bị
+              bay trong không gian.
+            </p>
+            <div class="tags">
+              <span class="tag">FPV</span>
+              <span class="tag">Flight Controller</span>
+              <span class="tag">Pin &amp; Nguồn</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🛡️ Khí tài: Xe tăng &amp; Súng</h3>
+            <p>
+              Thích tìm hiểu cấu tạo, nguyên lý hoạt động, hỏa lực, giáp bảo vệ và các dòng khí tài
+              quân sự qua tài liệu, mô hình và game.
+            </p>
+            <div class="tags">
+              <span class="tag">Xe tăng</span>
+              <span class="tag">Súng</span>
+              <span class="tag">Cơ khí</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filterable Projects / Activities -->
+      <section id="projects">
+        <h2 class="section-title">Góc làm &amp; chơi</h2>
+        <p class="section-sub">Bấm lọc theo từng nhóm để xem chi tiết hơn.</p>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all" type="button">Tất cả</button>
+          <button class="filter-btn" data-filter="tech" type="button">Kỹ thuật &amp; DIY</button>
+          <button class="filter-btn" data-filter="game" type="button">Gaming</button>
+        </div>
+
+        <div class="grid-2" id="itemGrid">
+          <div class="card" data-category="tech">
+            <h3>Mạch điện, cảm biến &amp; mô hình DIY</h3>
+            <p>
+              Thích đấu nối mạch, đọc dữ liệu cảm biến, gia công khung/vỏ và phác thảo ý tưởng
+              bằng bản vẽ tay trước khi làm thật.
+            </p>
+            <div class="tags">
+              <span class="tag">Cảm biến</span>
+              <span class="tag">Vẽ tay</span>
+              <span class="tag">Prototype</span>
+            </div>
+          </div>
+
+          <div class="card" data-category="tech">
+            <h3>Web &amp; công cụ cá nhân</h3>
+            <p>
+              Tự dựng trang web, giao diện trực quan và các công cụ nhỏ gọn phục vụ học tập,
+              ghi chú và thử nghiệm ý tưởng.
+            </p>
+            <div class="tags">
+              <span class="tag">Frontend</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">Experiment</span>
+            </div>
+          </div>
+
+          <div class="card" data-category="game">
+            <h3>Valorant &amp; bắn súng chiến thuật</h3>
+            <p>
+              Thích cảm giác aim, di chuyển, giữ góc và xử lý tình huống căng thẳng theo từng round.
+            </p>
+            <div class="tags">
+              <span class="tag">Valorant</span>
+              <span class="tag">Aim &amp; Reflex</span>
+            </div>
+          </div>
+
+          <div class="card" data-category="game">
+            <h3>Roblox &amp; War Robots</h3>
+            <p>
+              Đổi gió với nhiều chế độ chơi, cơ chế sáng tạo trong Roblox và những trận đấu mech/chiến đấu
+              đậm chất cơ khí trong War Robots.
+            </p>
+            <div class="tags">
+              <span class="tag">Roblox</span>
+              <span class="tag">War Robots</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="card">
+          <h2 class="section-title">Muốn trao đổi hoặc rủ làm gì cùng nhau?</h2>
+          <p class="section-sub" style="margin-bottom: 16px;">
+            Nếu bạn cũng mê công nghệ, DIY, FPV, xe tăng/súng hoặc hay chơi mấy tựa game trên,
+            có thể gắn link mạng xã hội / Discord / GitHub của bạn vào đây.
+          </p>
+          <div class="actions">
+            <a href="https://github.com" target="_blank" rel="noreferrer" class="btn btn-primary">GitHub</a>
+            <button id="copyBio" class="btn btn-ghost" type="button">Copy đoạn giới thiệu ngắn</button>
+          </div>
+          <p id="copyStatus" style="margin-top: 10px; font-size: 0.85rem; color: var(--accent-2);"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+      <span>© 2026 Khánh — Built with pure HTML, CSS &amp; JS</span>
+      <span>Tech • DIY • FPV • Armor • Gaming</span>
+    </div>
+  </footer>
+
+  <script>
+    // Đổi câu châm ngôn ngẫu nhiên
+    const quotes = [
+      '"Làm ít nói nhiều, test thực tế luôn dạy nhiều hơn lý thuyết suông."',
+      '"Lỗi là dữ liệu, fix xong là lên thêm một bậc."',
+      '"Từ bản phác thảo trên giấy đến sản phẩm chạy được là cả một hành trình thú vị."',
+      '"Tập trung cao độ, xử lý gọn gàng, chơi hết mình."'
+    ];
+    let qIndex = 0;
+    const quoteBox = document.getElementById("quoteBox");
+    document.getElementById("shuffleQuote").addEventListener("click", () => {
+      qIndex = (qIndex + 1) % quotes.length;
+      quoteBox.textContent = quotes[qIndex];
+    });
+
+    // Lọc thẻ theo danh mục
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll("#itemGrid .card");
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+        cards.forEach((card) => {
+          const match = filter === "all" || card.dataset.category === filter;
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+
+    // Copy bio ngắn
+    document.getElementById("copyBio").addEventListener("click", async () => {
+      const bio = "Mình là Khánh — quan tâm đến CNTT, máy tính, DIY/vi mạch, FPV, xe tăng/súng và các game như Valorant, Roblox, War Robots.";
+      const status = document.getElementById("copyStatus");
+      try {
+        await navigator.clipboard.writeText(bio);
+        status.textContent = "Đã copy đoạn giới thiệu ngắn vào clipboard!";
+      } catch {
+        status.textContent = bio;
+      }
+    });
+  </script>
 </body>
-</html>
+    </html>
+    
